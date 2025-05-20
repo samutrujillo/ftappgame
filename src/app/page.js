@@ -29,8 +29,8 @@ export default function MesaSelection() {
 
   const mesas = [
     { id: 1, nombre: "MESA VIP", tipo: "VIP", valor: "15.000", colorClass: "mesa-vip" },
-    { id: 2, nombre: "MESA ROYAL", tipo: "ROYAL", valor: "30.000", colorClass: "mesa-royal" },
-    { id: 3, nombre: "MESA GOLD", tipo: "GOLD", valor: "20.000", colorClass: "mesa-gold" }
+    { id: 2, nombre: "MESA ROYAL", tipo: "ROYAL", valor: "20.000", colorClass: "mesa-royal" },
+    { id: 3, nombre: "MESA GOLD", tipo: "GOLD", valor: "30.000", colorClass: "mesa-gold" }
   ];
 
   return (

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import './styles.css';
+import CoinRain from './components/CoinRain';
 
 export default function MesaSelection() {
   const [hoveredTable, setHoveredTable] = useState(null);
@@ -35,6 +36,9 @@ export default function MesaSelection() {
 
   return (
     <div className="container">
+      {/* Añadir el componente CoinRain aquí */}
+      <CoinRain />
+      
       <div className="overlay"></div>
       <div className="content">
         {/* Header */}

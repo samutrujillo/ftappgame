@@ -42,13 +42,6 @@
   }
 }
 
-/* Reducir la cantidad de monedas en dispositivos móviles */
-@media (max-width: 768px) {
-  .coin {
-    font-size: 20px;
-  }
-}
-
 @media (max-width: 480px) {
   .coin {
     font-size: 16px;

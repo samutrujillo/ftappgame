@@ -210,3 +210,164 @@ body {
   color: #9ca3af;
   font-size: 0.875rem;
 }
+
+.pin-required {
+  display: flex;
+  align-items: center;
+  color: #fbbf24;
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+}
+
+.lock-icon {
+  margin-right: 0.5rem;
+}
+
+.pin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.pin-modal {
+  background: linear-gradient(to bottom right, #1f2937, #111827);
+  border: 2px solid #374151;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pin-modal h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.pin-mesa-name {
+  color: #fbbf24;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.pin-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  background: rgba(31, 41, 55, 0.8);
+  border: 2px solid #374151;
+  border-radius: 0.5rem;
+  color: white;
+  letter-spacing: 0.5rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.pin-input:focus {
+  outline: none;
+  border-color: #60a5fa;
+}
+
+.pin-error {
+  color: #ef4444;
+  text-align: center;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.pin-modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pin-button {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.pin-button.cancel {
+  background: #4b5563;
+  color: white;
+}
+
+.pin-button.cancel:hover {
+  background: #6b7280;
+}
+
+.pin-button.confirm {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  color: white;
+}
+
+.pin-button.confirm:hover:not(:disabled) {
+  background: linear-gradient(to right, #2563eb, #7c3aed);
+}
+
+.pin-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Nuevos estilos para el control de audio */
+.mute-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.mute-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}

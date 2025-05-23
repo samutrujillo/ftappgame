@@ -10,25 +10,21 @@ export default function MesaSelection() {
   const [selectedMesa, setSelectedMesa] = useState(null);
   const [pin, setPin] = useState('');
   const [pinError, setPinError] = useState('');
-  const [isMuted, setIsMuted] = useState(false);
+  const [showAudioConsent, setShowAudioConsent] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef(null);
 
-  // Efecto para manejar la reproducción automática
-  useEffect(() => {
-    if (audioRef.current) {
-      const playAudio = () => {
-        try {
-          audioRef.current.play();
-          document.removeEventListener('click', playAudio);
-        } catch (error) {
-          console.log('Error al reproducir audio:', error);
-        }
-      };
-      
-      document.addEventListener('click', playAudio);
-      return () => document.removeEventListener('click', playAudio);
+  const handleAudioConsent = (accepted) => {
+    setShowAudioConsent(false);
+    if (accepted) {
+      setIsMuted(false);
+      try {
+        audioRef.current.play();
+      } catch (error) {
+        console.error('Error al reproducir audio:', error);
+      }
     }
-  }, []);
+  };
 
   const PINS = {
     ROYAL: '3484',
@@ -104,12 +100,40 @@ export default function MesaSelection() {
         src="/cancionfondo.mp3"
       />
       
-      <button 
-        className="mute-button"
-        onClick={() => setIsMuted(!isMuted)}
-      >
-        {isMuted ? '🔇' : '🔊'}
-      </button>
+      {showAudioConsent && (
+        <div className="audio-consent-overlay">
+          <div className="audio-consent-modal">
+            <h3>¡Bienvenido a FTAPPGAME!</h3>
+            <p>Para una mejor experiencia, recomendamos activar el sonido.</p>
+            <p className="audio-warning">
+              ⚠️ Las políticas de tu navegador requieren tu permiso para reproducir audio.
+            </p>
+            <div className="audio-consent-buttons">
+              <button 
+                className="consent-button cancel"
+                onClick={() => handleAudioConsent(false)}
+              >
+                Cancelar
+              </button>
+              <button 
+                className="consent-button accept"
+                onClick={() => handleAudioConsent(true)}
+              >
+                Aceptar sonido
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {!showAudioConsent && (
+        <button 
+          className="mute-button"
+          onClick={() => setIsMuted(!isMuted)}
+        >
+          {isMuted ? '🔇' : '🔊'}
+        </button>
+      )}
 
       <CoinRain />
       
